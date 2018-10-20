@@ -18,6 +18,15 @@ public class Coordinate {
 		return yCoordinate;
 	}
 
+	public boolean isNotWithinBoundsOf(int boardSize) {
+		return checkIfTheCoordinateIsWithinBounds(this.getxCoordinate(), boardSize)
+				|| checkIfTheCoordinateIsWithinBounds(this.getyCoordinate(), boardSize);
+	}
+
+	private boolean checkIfTheCoordinateIsWithinBounds(int coordinate, int boardSize) {
+		return coordinate <= 0 || coordinate > boardSize;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

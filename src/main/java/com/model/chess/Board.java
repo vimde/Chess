@@ -6,14 +6,9 @@ public class Board {
 	private Pawn piece[][] = new Pawn[SIZE][SIZE];
 
 	public void addPiece(Pawn pawn, Coordinate position) {
-		if(isAnInvalid(position))
+		if(position.isNotWithinBoundsOf(SIZE))
 			throw new IllegalArgumentException("Position is invalid");
 		piece[position.getxCoordinate()][position.getyCoordinate()] = pawn;
-	}
-
-	private boolean isAnInvalid(Coordinate position) {
-		return position.getxCoordinate() <= 0  || position.getxCoordinate() > SIZE 
-				|| position.getyCoordinate() <= 0 || position.getyCoordinate() > SIZE;
 	}
 
 	public Pawn getPieceIn(Coordinate position) {
