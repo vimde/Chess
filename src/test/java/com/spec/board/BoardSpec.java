@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.model.chess.Board;
+import com.model.chess.Coordinate;
 import com.model.chess.Pawn;
 
 public class BoardSpec {
@@ -21,12 +22,12 @@ public class BoardSpec {
 
 	@Test
 	public void doesNotThrowExceptionWhenAddingAPieceToAnUnoccupiedSquareOnTheBoard() {
-		board.addPiece(pawn, 1, 2);
+		board.addPiece(pawn, new Coordinate(1, 2));
 	}
 
 	@Test
 	public void shouldBeAbleToRetrieveThePieceThatHasAlreadyBeenAdded() {
-		board.addPiece(pawn, 1, 2);
+		board.addPiece(pawn, new Coordinate(1, 2));
 		assertEquals(pawn, board.getPieceIn(1, 2));
 	}
 }

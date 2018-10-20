@@ -2,10 +2,11 @@ package com.model.chess;
 
 public class Board {
 
-	private Pawn piece[][] = new Pawn[8][8];
+	private static final int SIZE = 8;
+	private Pawn piece[][] = new Pawn[SIZE][SIZE];
 
-	public void addPiece(Pawn pawn, int xCoordinate, int yCoordinate) {
-		piece[xCoordinate][yCoordinate] = pawn;
+	public void addPiece(Pawn pawn, Coordinate position) {
+		piece[position.getxCoordinate()][position.getyCoordinate()] = pawn;
 	}
 
 	public Pawn getPieceIn(int xCoordinate, int yCoordinate) {

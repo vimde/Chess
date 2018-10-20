@@ -2,6 +2,8 @@ package com.spec.board;
 
 import static org.junit.Assert.*;
 
+import java.util.stream.Stream;
+
 import org.junit.Test;
 
 import com.model.chess.Coordinate;
@@ -10,9 +12,13 @@ import com.model.chess.Pawn;
 public class PawnSpec {
 
 	@Test
-	public void returnsTheNextPositionFromTheCurrentPosition() {
+	public void returnsOneOfTheNextPossiblePositionsFromTheCurrentPosition() {
 		Pawn pawn = new Pawn();
-		Coordinate nextPossibleMove = pawn.getNextPossibleMoveFrom(2, 2);
-		assertEquals(new Coordinate(2, 3), nextPossibleMove);
+		Stream<Coordinate> nextPossibleMove = pawn.getNextPossibleMoveFrom(2, 2);
+		int nextPossible_X_Position = 2;
+		int nextPossible_Y_Position = 3;
+		assertTrue("Not a possible move for Pawn", nextPossibleMove
+				.anyMatch(coordinate -> coordinate.getxCoordinate() == nextPossible_X_Position
+				&& coordinate.getyCoordinate() == nextPossible_Y_Position));
 	}
 }
