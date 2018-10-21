@@ -3,16 +3,16 @@ package com.model.chess;
 public class Board {
 
 	private static final int SIZE = 8;
-	private Pawn piece[][] = new Pawn[SIZE][SIZE];
+	private Piece pieces[][] = new Piece[SIZE][SIZE];
 
-	public void addPiece(Pawn pawn, Coordinate position) {
+	public void addPiece(Piece piece, Coordinate position) {
 		if(position.isNotWithinBoundsOf(SIZE))
 			throw new IllegalArgumentException("Position is invalid");
-		piece[position.getxCoordinate()][position.getyCoordinate()] = pawn;
+		this.pieces[position.getxCoordinate()][position.getyCoordinate()] = piece;
 	}
 
-	public Pawn getPieceIn(Coordinate position) {
-		return piece[position.getxCoordinate()][position.getyCoordinate()];
+	public Piece getPieceIn(Coordinate position) {
+		return pieces[position.getxCoordinate()][position.getyCoordinate()];
 	}
 
 }

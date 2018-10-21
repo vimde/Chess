@@ -10,6 +10,7 @@ import org.junit.rules.ExpectedException;
 import com.model.chess.Board;
 import com.model.chess.Coordinate;
 import com.model.chess.Pawn;
+import com.model.chess.Rook;
 
 public class BoardSpec {
 
@@ -26,12 +27,12 @@ public class BoardSpec {
 	}
 
 	@Test
-	public void doesNotThrowExceptionWhenAddingAPieceToAnUnoccupiedSquareOnTheBoard() {
+	public void doesNotThrowExceptionWhenAddingAPawnToAnUnoccupiedSquareOnTheBoard() {
 		board.addPiece(pawn, new Coordinate(1, 2));
 	}
 
 	@Test
-	public void shouldBeAbleToRetrieveThePieceThatHasAlreadyBeenAdded() {
+	public void shouldBeAbleToRetrieveThePawnThatHasAlreadyBeenAdded() {
 		board.addPiece(pawn, new Coordinate(1, 2));
 		assertEquals(pawn, board.getPieceIn(new Coordinate(1, 2)));
 	}
@@ -58,5 +59,12 @@ public class BoardSpec {
 	public void shouldThrowExceptionIfYCoordinateIsGreaterThanSizeOfBoard() {
 		exception.expect(IllegalArgumentException.class);
 		board.addPiece(pawn, new Coordinate(2, 14));
+	}
+	
+	@Test
+	public void doesNotThrowExceptionWhenRookIsAddedToASquareWithinBounds() {
+		Rook rook = new Rook();
+		Coordinate position = new Coordinate(3, 4);
+		board.addPiece(rook, position);
 	}
 }
