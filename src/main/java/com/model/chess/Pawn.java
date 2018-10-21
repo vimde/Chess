@@ -19,4 +19,8 @@ public class Pawn extends Piece {
 		return Stream.concat(possibleMove, anotherPossibleMove);
 	}
 
+	public void move() {
+		pawnHasNotMoved = false;
+	}
+
 }
